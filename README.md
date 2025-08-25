@@ -1,4 +1,10 @@
 
+# Introduction
+
+Sometimes I like to challenge myself and get certifications and now I chose to do the PCPP1 from the Python Institute ([click here](https://pythoninstitute.org/pcpp1)). It's really just for the fun and challenge of it. I really don't have a lot of time for this one, so I chose something I am already familiar with, which is Python programming. That said, I don't really do a whole lot of GUI programming in Python, even less with Tkinter, and I  don't do any network programming at all, so this will at least involve _some_ challenge.
+
+My methodology is quite simple: I read the open source test prep material from PI _once_, I don't run the test code unless I'm not 100% sure I understand it, but I always to the labs without external assistance (`code/`) tos imulate exam conditions. I also summarize each slide or page of content with the help of an LLM in Markdown format that I post here (for now). I will read these summaries or skim them whenever I have time, which is rarely.
+
 # Object-Oriented Programming
 
 ## Advanced OOP Topics
