@@ -1,10 +1,4 @@
 
-# Introduction
-
-Sometimes I like to challenge myself and get certifications and now I chose to do the PCPP1 from the Python Institute ([click here](https://pythoninstitute.org/pcpp1)). It's really just for the fun and challenge of it. I really don't have a lot of time for this one, so I chose something I am already familiar with, which is Python programming. That said, I don't really do a whole lot of GUI programming in Python, even less with Tkinter, and I  don't do any network programming at all, so this will at least involve _some_ challenge.
-
-My methodology is quite simple: I read the open source test prep material from PI _once_, I don't run the test code unless I'm not 100% sure I understand it, but I always to the labs without external assistance (`code/`) tos imulate exam conditions. I also summarize each slide or page of content with the help of an LLM in Markdown format that I post here (for now). I will read these summaries or skim them whenever I have time, which is rarely.
-
 # Object-Oriented Programming
 
 ## Advanced OOP Topics
@@ -111,7 +105,84 @@ class Duck:
 
 duckling = Duck("male")
 
-print(type(Duck))           # <class 'type'>
-print(type(duckling))       # <class '__main__.Duck'>
-print(type(duckling.sex))   # <class 'str'>
-print(type(duckling.quack)) # <class 'method'>
+print(type(Duck))          # <class 'type'>
+print(type(duckling))      # <class '__main__.Duck'>
+print(type(duckling.sex))  # <class 'str'>
+print(type(duckling.quack))# <class 'method'>
+```
+# Instance Variables
+
+## Definition
+- Belong to a **specific object** (instance), not the class itself
+- Created:
+  - Inside `__init__` using `self.var = value`
+  - Or later, dynamically added to an object
+- Each object has its **own copy** of the variable that does not interfere with that of other instances
+- Can be deleted at runtime by removing the key-value pair corresponding to the instance attribute in the dictionary of instance attributes accessible through `obj.__dict__`
+
+## Syntax Example
+```python
+class Demo:
+    def __init__(self, value):
+        self.instance_var = value
+
+d1 = Demo(100)
+d2 = Demo(200)
+
+print(d1.instance_var)  # 100
+print(d2.instance_var)  # 200
+```
+# Class Variables
+
+## Definition
+- Belong to the **class itself**, not individual instances
+- Defined **inside the class body**
+- Accessible even **before** creating an instance
+- Shared across all instances of the class
+
+## Purpose
+- Exist **before any instance is created**
+- Useful for **metadata about the class**, not the instances
+  - Fixed info → description, config, IDs
+  - Mutable info → counters (e.g., track # of instances created)
+
+## Syntax Example
+```python
+class Demo:
+    class_var = "shared variable"
+
+print(Demo.class_var)      # Access via class
+print(Demo.__dict__)       # Shows class namespace
+```
+
+⚡️ **Exam Tips**
+
+-   **Instance vars** live in `obj.__dict__`
+-   **Class vars** live in `Class.__dict__`
+-   If you assign to `instance.class_var`, you create a new **instance variable**, leaving the class variable untouched
+
+# Magic Methods (a.k.a. Dunder Methods)
+
+## Definition
+- Special methods surrounded by **double underscores** or **dunder** → `__method__`
+- Implement **core syntax** behavior:
+  - Operators → e.g., `+`, `-`, `*`, `==`
+  - Built-in functions → e.g., `len()`, `str()`, `iter()`
+- Called **implicitly** by Python, not directly by the programmer  
+  - `+` → `__add__()`
+  - `len(obj)` → `obj.__len__()`
+
+## Example: The `+` Operator
+```python
+number = 10
+print(number + 20)          # Normal syntax
+print(number.__add__(20))   # Equivalent call
+```
+## Exploring dunder methods
+- Use the `dir()` function to explore `obj`'s magic methods or `help()` to get more information.
+
+⚡️ **Exam Tips**
+-   Common magic methods :
+    -   `__add__` ( + ), `__sub__` ( - ), `__mul__` ( * )     
+    -   `__len__` → `len(obj)`
+    -   `__str__`, `__repr__` → string conversions
