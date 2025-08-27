@@ -212,3 +212,25 @@ class LandVehicle(Vehicle):
 class TrackedVehicle(LandVehicle):  
     pass
 ```
+# Single vs. Multiple Inheritance
+
+## Single Inheritance
+- Subclass derives from **one superclass**
+- ✅ Simple, safe, easy to understand/maintain
+- ✅ Clear method overriding rules
+- ✅ Follows Single Responsibility Principle
+
+## Multiple Inheritance
+- Subclass derives from **two or more superclasses**
+- ✅ Supported in Python
+- ⚠️ Risks:
+  - Complex, harder to reason about
+  - Method overriding can be tricky
+  - `super()` calls may be ambiguous
+  - Often a **design smell** due to **single responsibility principle** → consider **composition** instead
+
+## MRO — Method Resolution Order
+- Defines the order in which Python looks up methods/attributes
+- Solves ambiguity in multiple inheritance
+- Use `ClassName.__mro__` or `ClassName.mro()` to inspect
+
