@@ -186,3 +186,29 @@ print(number.__add__(20))   # Equivalent call
     -   `__add__` ( + ), `__sub__` ( - ), `__mul__` ( * )     
     -   `__len__` → `len(obj)`
     -   `__str__`, `__repr__` → string conversions
+
+# Inheritance & Polymorphism
+
+## Inheritance
+- Mechanism to build new classes **from existing ones** ("is-a")
+- **Superclass (parent)** → general/abstract
+- **Subclass (child/descendant)** → specialized/specific
+- Subclass inherits:
+  - All attributes (variables)
+  - All methods (behavior)
+- Subclass can also add or override features
+
+## Example
+```python
+# Superclass
+class Vehicle:   
+    pass
+
+# Subclass of Vehicle
+class LandVehicle(Vehicle):   
+    pass
+
+# Subclass of LandVehicle (and Vehicle)
+class TrackedVehicle(LandVehicle):  
+    pass
+```
